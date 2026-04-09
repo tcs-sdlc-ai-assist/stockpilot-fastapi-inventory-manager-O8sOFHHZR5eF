@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}StockPilot{% endblock %} | StockPilot</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/custom.css">
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="h-full bg-gray-50 flex flex-col min-h-screen">
+    {% from "macros/avatar.html" import avatar %}
+
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2">
+                        <svg class="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                        </svg>
+                        <span class="text-xl font-bold text-gray-900">StockPilot</span>
+                    </a>
+                    {% if user %}
+                    <div class="hidden sm:ml-8 sm:flex sm:space-x-4">
+                        <a href="/inventory/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-150">
+                            <svg class="mr-1.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0-6.75L8.25 13.5m3.75-2.25l3.75 2.25" />
+                            </svg>
+                            Inventory
+                        </a>
+                        {% if user.role == 'admin' %}
+                        <a href="/dashboard/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-150">
+                            <svg class="mr-1.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5" />
+                            </svg>
+                            Dashboard
+                        </a>
+                        <a href="/categories/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-150">
+                            <svg class="mr-1.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                            </svg>
+                            Categories
+                        </a>
+                        <a href="/users/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-150">
+                            <svg class="mr-1.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                            </svg>
+                            Users
+                        </a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    {% if user %}
+                    <div class="flex items-center space-x-3">
+                        <div class="hidden sm:flex items-center space-x-2">
+                            {{ avatar(user, size="sm") }}
+                            <span class="text-sm font-medium text-gray-700">{{ user.display_name }}</span>
+                            <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium {% if user.role == 'admin' %}bg-indigo-100 text-indigo-700{% else %}bg-gray-100 text-gray-600{% endif %}">
+                                {{ user.role | capitalize }}
+                            </span>
+                        </div>
+                        <form method="POST" action="/logout" class="inline">
+                            <button type="submit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors duration-150">
+                                <svg class="mr-1.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                                </svg>
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="sm:hidden">
+                        <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                        </button>
+                    </div>
+                    {% else %}
+                    <a href="/login" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-150">
+                        Login
+                    </a>
+                    <a href="/register" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors duration-150">
+                        Get Started
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% if user %}
+        <div id="mobile-menu" class="sm:hidden hidden border-t border-gray-200">
+            <div class="px-4 py-3 space-y-1">
+                <div class="flex items-center space-x-2 px-3 py-2 mb-2">
+                    {{ avatar(user, size="sm") }}
+                    <div>
+                        <p class="text-sm font-medium text-gray-900">{{ user.display_name }}</p>
+                        <p class="text-xs text-gray-500">{{ user.role | capitalize }}</p>
+                    </div>
+                </div>
+                <a href="/inventory/" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md">Inventory</a>
+                {% if user.role == 'admin' %}
+                <a href="/dashboard/" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md">Dashboard</a>
+                <a href="/categories/" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md">Categories</a>
+                <a href="/users/" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md">Users</a>
+                {% endif %}
+                <form method="POST" action="/logout">
+                    <button type="submit" class="w-full text-left px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-md">Logout</button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+    </nav>
+
+    <main class="flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            {% if messages %}
+            <div class="space-y-3 mb-6">
+                {% for message in messages %}
+                <div class="flash-message relative rounded-lg px-4 py-3 text-sm {% if message.category == 'success' %}bg-green-50 text-green-800 border border-green-200{% elif message.category == 'error' %}bg-red-50 text-red-800 border border-red-200{% elif message.category == 'warning' %}bg-yellow-50 text-yellow-800 border border-yellow-200{% else %}bg-blue-50 text-blue-800 border border-blue-200{% endif %}" role="alert">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            {% if message.category == 'success' %}
+                            <svg class="h-5 w-5 text-green-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            {% elif message.category == 'error' %}
+                            <svg class="h-5 w-5 text-red-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                            </svg>
+                            {% elif message.category == 'warning' %}
+                            <svg class="h-5 w-5 text-yellow-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                            </svg>
+                            {% else %}
+                            <svg class="h-5 w-5 text-blue-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                            </svg>
+                            {% endif %}
+                            <span>{{ message.text }}</span>
+                        </div>
+                        <button type="button" onclick="this.closest('.flash-message').remove()" class="ml-4 inline-flex flex-shrink-0 rounded-md p-1 hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-offset-2 {% if message.category == 'success' %}focus:ring-green-500{% elif message.category == 'error' %}focus:ring-red-500{% elif message.category == 'warning' %}focus:ring-yellow-500{% else %}focus:ring-blue-500{% endif %}">
+                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <div class="flex items-center space-x-2 text-gray-500">
+                    <svg class="h-5 w-5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                    </svg>
+                    <span class="text-sm font-medium">StockPilot</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="/" class="text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-150">Home</a>
+                    {% if user %}
+                    <a href="/inventory/" class="text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-150">Inventory</a>
+                    {% if user.role == 'admin' %}
+                    <a href="/dashboard/" class="text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-150">Dashboard</a>
+                    {% endif %}
+                    {% endif %}
+                </div>
+                <p class="text-sm text-gray-400">&copy; {{ now.year if now else "2024" }} StockPilot. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var menuBtn = document.getElementById('mobile-menu-btn');
+            var mobileMenu = document.getElementById('mobile-menu');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            var flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(function(msg) {
+                setTimeout(function() {
+                    msg.style.transition = 'opacity 0.3s ease-out';
+                    msg.style.opacity = '0';
+                    setTimeout(function() {
+                        msg.remove();
+                    }, 300);
+                }, 5000);
+            });
+        });
+    </script>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

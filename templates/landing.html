@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="-mx-4 sm:-mx-6 lg:-mx-8 -mt-6">
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-500 to-teal-500">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+            <svg class="absolute bottom-0 left-0 right-0 text-gray-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="currentColor" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+            </svg>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-6">
+                    <svg class="h-14 w-14 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                    </svg>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
+                    StockPilot
+                </h1>
+                <p class="mt-4 max-w-2xl mx-auto text-lg sm:text-xl text-emerald-50 leading-relaxed">
+                    Intelligent inventory management for modern teams. Track stock levels, manage categories, and stay on top of reorder alerts — all in one place.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="/register" class="inline-flex items-center px-8 py-3.5 text-base font-semibold text-emerald-700 bg-white rounded-lg shadow-lg hover:bg-emerald-50 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-emerald-600 focus:ring-white">
+                        <svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.841m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                        </svg>
+                        Get Started
+                    </a>
+                    <a href="/login" class="inline-flex items-center px-8 py-3.5 text-base font-semibold text-white bg-white/15 border-2 border-white/30 rounded-lg hover:bg-white/25 hover:border-white/50 transition-all duration-200 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-emerald-600 focus:ring-white">
+                        <svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                        </svg>
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="bg-gray-50 py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
+                    Everything you need to manage inventory
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-500">
+                    Powerful features designed for small teams who need reliable stock management without the complexity.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature Card: Inventory Tracking -->
+                <div class="relative bg-white rounded-xl shadow-sm border border-gray-200 p-8 hover:shadow-md hover:border-emerald-200 transition-all duration-200">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-emerald-100 text-emerald-600 mb-5">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0-6.75L8.25 13.5m3.75-2.25l3.75 2.25" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Inventory Tracking</h3>
+                    <p class="text-gray-500 leading-relaxed">
+                        Full CRUD operations for all your inventory items. Track quantities, prices, categories, and reorder levels with an intuitive interface.
+                    </p>
+                </div>
+
+                <!-- Feature Card: Role-Based Access -->
+                <div class="relative bg-white rounded-xl shadow-sm border border-gray-200 p-8 hover:shadow-md hover:border-teal-200 transition-all duration-200">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-teal-100 text-teal-600 mb-5">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Role-Based Access</h3>
+                    <p class="text-gray-500 leading-relaxed">
+                        Secure Admin and Staff roles with granular permissions. Admins manage users and categories while staff focus on day-to-day inventory operations.
+                    </p>
+                </div>
+
+                <!-- Feature Card: Real-Time Alerts -->
+                <div class="relative bg-white rounded-xl shadow-sm border border-gray-200 p-8 hover:shadow-md hover:border-emerald-200 transition-all duration-200">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-amber-100 text-amber-600 mb-5">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Real-Time Alerts</h3>
+                    <p class="text-gray-500 leading-relaxed">
+                        Automatic low-stock notifications when inventory falls below configurable reorder levels. Never run out of critical items again.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-white py-16 sm:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
+                Ready to take control of your inventory?
+            </h2>
+            <p class="mt-4 text-lg text-gray-500">
+                Get started in seconds. No credit card required. No complex setup.
+            </p>
+            <div class="mt-8">
+                <a href="/register" class="inline-flex items-center px-8 py-3.5 text-base font-semibold text-white bg-emerald-600 rounded-lg shadow-sm hover:bg-emerald-700 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+                    Create Your Free Account
+                    <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

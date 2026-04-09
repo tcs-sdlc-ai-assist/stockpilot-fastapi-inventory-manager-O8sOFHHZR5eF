@@ -1,0 +1,35 @@
+{% macro avatar(user, size="md") %}
+{% if size == "sm" %}
+{% set container_class = "w-6 h-6 text-xs" %}
+{% elif size == "lg" %}
+{% set container_class = "w-12 h-12 text-2xl" %}
+{% else %}
+{% set container_class = "w-8 h-8 text-sm" %}
+{% endif %}
+{% if user and user.role == 'admin' %}
+<span class="inline-flex items-center justify-center rounded-full bg-emerald-100 text-emerald-700 {{ container_class }}" title="{{ user.display_name }} (Admin)">🛡️</span>
+{% elif user and user.role == 'staff' %}
+<span class="inline-flex items-center justify-center rounded-full bg-teal-100 text-teal-700 {{ container_class }}" title="{{ user.display_name }} (Staff)">📦</span>
+{% else %}
+<span class="inline-flex items-center justify-center rounded-full bg-gray-100 text-gray-500 {{ container_class }}" title="Unknown">👤</span>
+{% endif %}
+{% endmacro %}
+
+{% macro avatar_with_name(user, size="md") %}
+<div class="inline-flex items-center gap-2">
+    {{ avatar(user, size) }}
+    {% if user %}
+    <span class="text-sm font-medium text-gray-700">{{ user.display_name }}</span>
+    {% else %}
+    <span class="text-sm font-medium text-gray-400">Unknown User</span>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro role_badge(user) %}
+{% if user and user.role == 'admin' %}
+<span class="inline-flex items-center rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700 ring-1 ring-inset ring-emerald-600/20">Admin</span>
+{% elif user and user.role == 'staff' %}
+<span class="inline-flex items-center rounded-full bg-teal-50 px-2 py-0.5 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-600/20">Staff</span>
+{% endif %}
+{% endmacro %}
